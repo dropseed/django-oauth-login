@@ -6,7 +6,7 @@ from urllib.parse import urlencode
 from django.conf import settings
 from django.contrib.auth import login as auth_login
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, NoReverseMatch
 from django.utils.crypto import get_random_string
 from django.utils.module_loading import import_string
 
@@ -179,7 +179,13 @@ class OAuthProvider:
         auth_login(request=request, user=user, backend=self.authentication_backend)
 
     def get_login_redirect_url(self, *, request: HttpRequest) -> str:
-        return request.session.pop(SESSION_NEXT_KEY, settings.LOGIN_REDIRECT_URL)
+        url = request.session.pop(SESSION_NEXT_KEY, settings.LOGIN_REDIRECT_URL)
+        try:
+            # If this is a named URL pattern, we need to `reverse` it
+            return reverse(url)
+        except NoReverseMatch:
+            # Assuming the url isn't a named url
+            return url
 
     def get_disconnect_redirect_url(self, *, request: HttpRequest) -> str:
         return request.POST.get("next", "/")
