@@ -494,3 +494,18 @@ def test_dummy_refresh(settings, monkeypatch):
     assert connection.refresh_token_expires_at == datetime.datetime(
         2029, 1, 2, 0, 0, tzinfo=datetime.timezone.utc
     )
+
+
+def test_login_redirect_urls(client, settings):
+    provider = DummyProvider(
+        provider_key="",
+        client_id="",
+        client_secret="",
+    )
+    request = client.get("/").wsgi_request
+
+    assert provider.get_login_redirect_url(request=request) == "/"
+
+    settings.LOGIN_REDIRECT_URL = "home"
+
+    assert provider.get_login_redirect_url(request=request) == "/home/"

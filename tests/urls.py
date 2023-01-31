@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView
 from django.urls import include, path
+from django.views import View
 from django.views.generic import TemplateView
 
 from oauthlogin.providers import get_provider_keys
@@ -20,10 +21,15 @@ class LoginView(TemplateView):
     template_name = "login.html"
 
 
+class HomeView(View):
+    pass
+
+
 urlpatterns = [
     path("admin", admin.site.urls),
     path("oauth/", include("oauthlogin.urls")),
     path("login/", LoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
+    path("home/", HomeView.as_view(), name="home"),
     path("", LoggedInView.as_view()),
 ]
