@@ -179,13 +179,14 @@ class OAuthProvider:
         auth_login(request=request, user=user, backend=self.authentication_backend)
 
     def get_login_redirect_url(self, *, request: HttpRequest) -> str:
-        url = request.session.pop(SESSION_NEXT_KEY, settings.LOGIN_REDIRECT_URL)
         try:
-            # If this is a named URL pattern, we need to `reverse` it
-            return reverse(url)
+            # The LOGIN_REDIRECT_URL setting can be a named URL
+            # which we need to reverse
+            default_redirect_url = reverse(settings.LOGIN_REDIRECT_URL)
         except NoReverseMatch:
-            # Assuming the url isn't a named url
-            return url
+            default_redirect_url = settings.LOGIN_REDIRECT_URL
+
+        return request.session.pop(SESSION_NEXT_KEY, default_redirect_url)
 
     def get_disconnect_redirect_url(self, *, request: HttpRequest) -> str:
         return request.POST.get("next", "/")
