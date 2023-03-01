@@ -26,6 +26,9 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+
 
 [tool.pytest.ini_options]
 python_files = "tests.py test_*.py *_tests.py"
