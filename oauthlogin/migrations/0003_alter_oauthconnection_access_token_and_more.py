@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='oauthconnection',
             name='access_token',
-            field=models.CharField(max_length=1000),
+            field=models.CharField(max_length=2000),
         ),
         migrations.AlterField(
             model_name='oauthconnection',
             name='refresh_token',
-            field=models.CharField(blank=True, max_length=1000),
+            field=models.CharField(blank=True, max_length=2000),
         ),
     ]
