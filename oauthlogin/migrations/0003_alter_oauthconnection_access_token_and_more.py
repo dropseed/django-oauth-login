@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('oauthlogin', '0002_alter_oauthconnection_options_and_more'),
+        ("oauthlogin", "0002_alter_oauthconnection_options_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='oauthconnection',
-            name='access_token',
+            model_name="oauthconnection",
+            name="access_token",
             field=models.CharField(max_length=2000),
         ),
         migrations.AlterField(
-            model_name='oauthconnection',
-            name='refresh_token',
+            model_name="oauthconnection",
+            name="refresh_token",
             field=models.CharField(blank=True, max_length=2000),
         ),
     ]
