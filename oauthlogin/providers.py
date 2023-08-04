@@ -1,6 +1,6 @@
 import datetime
 import secrets
-from typing import Any, List
+from typing import Any, List, Optional
 from urllib.parse import urlencode
 
 from django.conf import settings
@@ -23,8 +23,8 @@ class OAuthToken:
         *,
         access_token: str,
         refresh_token: str = "",
-        access_token_expires_at: datetime.datetime = None,
-        refresh_token_expires_at: datetime.datetime = None,
+        access_token_expires_at: Optional[datetime.datetime] = None,
+        refresh_token_expires_at: Optional[datetime.datetime] = None,
     ):
         self.access_token = access_token
         self.refresh_token = refresh_token
