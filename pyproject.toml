@@ -34,11 +34,11 @@ FAIL_INVALID_TEMPLATE_VARS = true
 
 [tool.poetry.dependencies]
 python = "^3.8"
+pytest = "^8.0.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
 Django = "^4.0.0"
-pytest = "^7.1.0"
 pytest-django = "^4.5.2"
 ipdb = "^0.13.9"
 requests = "^2.27.1"
