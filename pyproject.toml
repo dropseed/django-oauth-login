@@ -34,7 +34,7 @@ FAIL_INVALID_TEMPLATE_VARS = true
 
 [tool.poetry.dependencies]
 python = "^3.8"
-pytest = "^8.0.0"
+pytest = "^8.0.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
