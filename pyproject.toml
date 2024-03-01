@@ -34,7 +34,7 @@ FAIL_INVALID_TEMPLATE_VARS = true
 
 [tool.poetry.dependencies]
 python = "^3.8"
-black = "^24.1.1"
+black = "^24.2.0"
 
 [tool.poetry.group.dev.dependencies]
 Django = "^4.0.0"
