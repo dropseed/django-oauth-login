@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> Development on this package has moved to [Plain](https://plainframework.com?ref=django-oauth-login) and will continue there.
+> Existing releases will remain published and I encourage you to fork this repo if you need to make changes.
+
 # django-oauth-login
 
 **Add OAuth login support to your Django project.**
